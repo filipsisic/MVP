@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
 
     @Override
     public void showError() {
-        Toast.makeText(this, "Wrong event id", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.no_user_on_git_hub, Toast.LENGTH_SHORT).show();
     }
 
 }
