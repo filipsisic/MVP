@@ -4,27 +4,23 @@ public abstract class BasePresenter {
 
     protected abstract BaseModel getModel();
 
-    protected void onCreate() {
+    void onStart() {
 
     }
 
-    protected void onStart() {
+    void onResume() {
 
     }
 
-    protected void onResume() {
+    void onPause() {
 
     }
 
-    protected void onPause() {
-
-    }
-
-    protected void onStop() {
+    void onStop() {
         getModel().cancelAll();
     }
 
-    protected void onDestroy() {
+    void onDestroy() {
 
     }
 }

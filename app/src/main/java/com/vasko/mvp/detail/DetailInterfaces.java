@@ -4,6 +4,7 @@ import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 
+@SuppressWarnings("unused")
 interface DetailInterfaces {
 
     interface PresenterInterface {
