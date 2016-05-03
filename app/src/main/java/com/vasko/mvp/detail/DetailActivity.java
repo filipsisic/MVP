@@ -9,11 +9,11 @@ import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 
-public class DetailActivity extends BaseActivity implements DetailInterfaces.PtoA {
+public class DetailActivity extends BaseActivity implements DetailInterfaces.ActivityInterface {
 
     public static final String USERNAME = "USERNAME";
 
-    private DetailPresenter presenter;
+    private DetailInterfaces.PresenterInterface presenter;
     private TextView userName, userCompany;
 
     @Override
@@ -35,10 +35,9 @@ public class DetailActivity extends BaseActivity implements DetailInterfaces.Pto
     }
 
     @Override
-    protected BasePresenter getPresenter() {
-        return presenter;
+    public BasePresenter getPresenter() {
+        return presenter.getPresenter();
     }
-
 
     @Override
     public void showUser(GitHubUser user) {

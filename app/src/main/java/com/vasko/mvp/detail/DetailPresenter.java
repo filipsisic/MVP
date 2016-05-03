@@ -4,19 +4,24 @@ import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 
-public class DetailPresenter extends BasePresenter implements DetailInterfaces.AtoP, DetailInterfaces.MtoP {
+public class DetailPresenter extends BasePresenter implements DetailInterfaces.PresenterInterface, DetailInterfaces.PresenterCallback {
 
-    private final DetailInterfaces.PtoA view;
-    private final DetailModel model;
+    private final DetailInterfaces.ActivityInterface view;
+    private final DetailInterfaces.ModelInterface model;
 
-    public DetailPresenter(DetailInterfaces.PtoA view) {
+    public DetailPresenter(DetailInterfaces.ActivityInterface view) {
         this.view = view;
         model = new DetailModel(this);
     }
 
     @Override
     protected BaseModel getModel() {
-        return model;
+        return model.getModel();
+    }
+
+    @Override
+    public BasePresenter getPresenter() {
+        return this;
     }
 
     @Override

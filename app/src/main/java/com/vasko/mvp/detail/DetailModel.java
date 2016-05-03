@@ -8,12 +8,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetailModel extends BaseModel implements DetailInterfaces.PtoM {
+public class DetailModel extends BaseModel implements DetailInterfaces.ModelInterface {
 
-    private final DetailInterfaces.MtoP presenter;
+    private final DetailInterfaces.PresenterCallback presenter;
 
-    public DetailModel(DetailInterfaces.MtoP presenter) {
+    public DetailModel(DetailInterfaces.PresenterCallback presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public BaseModel getModel() {
+        return this;
     }
 
     @Override

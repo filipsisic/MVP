@@ -7,19 +7,24 @@ import com.vasko.mvp.data.GitHubRepo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPresenter extends BasePresenter implements MainInterfaces.AtoP, MainInterfaces.MtoP {
+public class MainPresenter extends BasePresenter implements MainInterfaces.PresenterInterface, MainInterfaces.PresenterCallback {
 
-    private final MainInterfaces.PtoA view;
-    private final MainModel model;
+    private final MainInterfaces.ActivityInterface view;
+    private final MainInterfaces.ModelInterface model;
 
-    public MainPresenter(MainInterfaces.PtoA view) {
+    public MainPresenter(MainInterfaces.ActivityInterface view) {
         this.view = view;
         model = new MainModel(this);
     }
 
     @Override
+    public BasePresenter getPresenter() {
+        return this;
+    }
+
+    @Override
     public BaseModel getModel() {
-        return model;
+        return model.getModel();
     }
 
     @Override

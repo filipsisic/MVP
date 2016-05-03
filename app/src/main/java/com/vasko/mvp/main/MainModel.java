@@ -10,12 +10,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainModel extends BaseModel implements MainInterfaces.PtoM {
+public class MainModel extends BaseModel implements MainInterfaces.ModelInterface {
 
-    private final MainInterfaces.MtoP presenter;
+    private final MainInterfaces.PresenterCallback presenterCallback;
 
-    public MainModel(MainPresenter presenter) {
-        this.presenter = presenter;
+    public MainModel(MainInterfaces.PresenterCallback presenterCallback) {
+        this.presenterCallback = presenterCallback;
+    }
+
+    @Override
+    public BaseModel getModel() {
+        return this;
     }
 
     @Override
@@ -24,9 +29,9 @@ public class MainModel extends BaseModel implements MainInterfaces.PtoM {
             @Override
             public void onResponse(Call<List<GitHubRepo>> call, Response<List<GitHubRepo>> response) {
                 if (response.isSuccessful()) {
-                    presenter.onRepoSuccess(response.body());
+                    presenterCallback.onRepoSuccess(response.body());
                 } else {
-                    presenter.onRepoError();
+                    presenterCallback.onRepoError();
                 }
             }
 

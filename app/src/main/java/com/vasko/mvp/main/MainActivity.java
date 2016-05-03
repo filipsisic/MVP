@@ -2,6 +2,8 @@ package com.vasko.mvp.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,14 +16,16 @@ import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 import com.vasko.mvp.detail.DetailActivity;
 import com.vasko.mvp.helper.Keyboard;
+import com.vasko.mvp.main.MainInterfaces.PresenterInterface;
 
 import java.util.List;
 
 @SuppressWarnings("ConstantConditions")
-public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
+public class MainActivity extends BaseActivity implements MainInterfaces.ActivityInterface {
 
     private MainAdapter adapter;
-    private MainPresenter presenter;
+    private PresenterInterface presenterInterface;
+    private Button openButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,8 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
 
         ListView listView = (ListView) findViewById(R.id.main_list);
         final EditText editText = (EditText) findViewById(R.id.main_edit);
-        final Button openButton = (Button) findViewById(R.id.detail_button);
+        editText.addTextChangedListener(getTextListener());
+        openButton = (Button) findViewById(R.id.detail_button);
         openButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,21 +48,20 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
             @Override
             public void onClick(View v) {
                 String username = editText.getText().toString().trim();
-                presenter.loadRepo(username);
+                presenterInterface.loadRepo(username);
                 Keyboard.hide(MainActivity.this);
-                openButton.setVisibility(View.VISIBLE);
             }
         });
 
         adapter = new MainAdapter(this);
-        presenter = new MainPresenter(this);
+        presenterInterface = new MainPresenter(this);
 
         listView.setAdapter(adapter);
     }
 
     @Override
     public BasePresenter getPresenter() {
-        return presenter;
+        return presenterInterface.getPresenter();
     }
 
     private void startDetailActivity(String username) {
@@ -69,11 +73,33 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
     @Override
     public void showList(List<GitHubRepo> repos) {
         adapter.notifyDataSetChanged(repos);
+        openButton.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showError() {
         Toast.makeText(this, R.string.no_user_on_git_hub, Toast.LENGTH_SHORT).show();
     }
+
+    private TextWatcher getTextListener() {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                openButton.setVisibility(View.GONE);
+            }
+        };
+    }
+
+
 
 }

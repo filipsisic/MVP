@@ -1,22 +1,28 @@
 package com.vasko.mvp.detail;
 
+import com.vasko.mvp.base.BaseModel;
+import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 
-interface DetailInterfaces {
+class DetailInterfaces {
 
-    interface AtoP {
+    interface PresenterInterface {
 
-        void loadUser(String username);
-
-    }
-
-    interface PtoM {
+        BasePresenter getPresenter();
 
         void loadUser(String username);
 
     }
 
-    interface MtoP {
+    interface ModelInterface {
+
+        BaseModel getModel();
+
+        void loadUser(String username);
+
+    }
+
+    interface PresenterCallback {
 
         void onUserSuccess(GitHubUser user);
 
@@ -25,7 +31,7 @@ interface DetailInterfaces {
     }
 
 
-    interface PtoA {
+    interface ActivityInterface {
 
         void showUser(GitHubUser user);
 

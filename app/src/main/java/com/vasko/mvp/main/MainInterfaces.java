@@ -1,24 +1,30 @@
 package com.vasko.mvp.main;
 
+import com.vasko.mvp.base.BaseModel;
+import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.List;
 
 class MainInterfaces {
 
-    interface AtoP {
+    interface PresenterInterface {
+
+        BasePresenter getPresenter();
 
         void loadRepo(String username);
 
     }
 
-    interface PtoM {
+    interface ModelInterface {
+
+        BaseModel getModel();
 
         void loadRepo(String username);
 
     }
 
-    interface MtoP {
+    interface PresenterCallback {
 
         void onRepoSuccess(List<GitHubRepo> repos);
 
@@ -27,7 +33,7 @@ class MainInterfaces {
     }
 
 
-    interface PtoA {
+    interface ActivityInterface {
 
         void showList(List<GitHubRepo> repos);
 
