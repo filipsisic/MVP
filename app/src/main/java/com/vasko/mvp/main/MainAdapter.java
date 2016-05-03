@@ -1,11 +1,13 @@
 package com.vasko.mvp.main;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.vasko.mvp.R;
 import com.vasko.mvp.data.Repo;
 
 import java.util.ArrayList;
@@ -44,8 +46,23 @@ public class MainAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView textView = new TextView(context);
-        textView.setText(list.get(position).getName());
-        return textView;
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.main_adapter_row, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        Repo repo = list.get(position);
+        viewHolder.name.setText(repo.getName());
+
+        return convertView;
+    }
+
+    private static class ViewHolder {
+        private TextView name;
     }
 }

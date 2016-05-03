@@ -11,6 +11,7 @@ import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.Repo;
+import com.vasko.mvp.helper.Keyboard;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
 
         ListView listView = (ListView) findViewById(R.id.main_list);
         final EditText editText = (EditText) findViewById(R.id.main_edit);
@@ -32,8 +33,9 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = editText.getText().toString();
+                String username = editText.getText().toString().trim();
                 presenter.loadRepo(username);
+                Keyboard.hide(MainActivity.this);
             }
         });
 
