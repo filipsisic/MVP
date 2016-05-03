@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.vasko.mvp.R;
-import com.vasko.mvp.data.Repo;
+import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,14 @@ import java.util.List;
 class MainAdapter extends BaseAdapter {
 
     private final Context context;
-    private final List<Repo> list;
+    private final List<GitHubRepo> list;
 
     public MainAdapter(Context context) {
         this.context = context;
         this.list = new ArrayList<>();
     }
 
-    public void notifyDataSetChanged(List<Repo> list) {
+    public void notifyDataSetChanged(List<GitHubRepo> list) {
         this.list.clear();
         this.list.addAll(list);
         super.notifyDataSetChanged();
@@ -35,7 +35,7 @@ class MainAdapter extends BaseAdapter {
     }
 
     @Override
-    public Repo getItem(int position) {
+    public GitHubRepo getItem(int position) {
         return list.get(position);
     }
 
@@ -56,7 +56,7 @@ class MainAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Repo repo = list.get(position);
+        GitHubRepo repo = list.get(position);
         viewHolder.name.setText(repo.getName());
 
         return convertView;

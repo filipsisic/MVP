@@ -1,11 +1,11 @@
 package com.vasko.mvp.data;
 
 @SuppressWarnings("unused")
-public class Repo {
+public class GitHubUser {
 
     private int id;
     private String name;
-    private boolean fork;
+    private String company;
 
     public int getId() {
         return id;
@@ -15,7 +15,7 @@ public class Repo {
         return name;
     }
 
-    public boolean isFork() {
-        return fork;
+    public String getCompany() {
+        return company;
     }
 }

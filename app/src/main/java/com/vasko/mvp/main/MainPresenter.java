@@ -2,7 +2,7 @@ package com.vasko.mvp.main;
 
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
-import com.vasko.mvp.data.Repo;
+import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ public class MainPresenter extends BasePresenter implements MainInterfaces.AtoP,
     }
 
     @Override
-    public void onHighlightsSuccess(List<Repo> repos) {
-        List<Repo> list = new ArrayList<>();
-        for (Repo repo : repos) {
+    public void onRepoSuccess(List<GitHubRepo> repos) {
+        List<GitHubRepo> list = new ArrayList<>();
+        for (GitHubRepo repo : repos) {
             if (repo.isFork()) {
                 list.add(repo);
             }
@@ -34,7 +34,7 @@ public class MainPresenter extends BasePresenter implements MainInterfaces.AtoP,
     }
 
     @Override
-    public void onHighlightsError() {
+    public void onRepoError() {
         view.showError();
     }
 

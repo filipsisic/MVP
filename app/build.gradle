@@ -22,6 +22,7 @@ android {
         main.res.srcDirs = [
                 'src/main/res',
                 'src/main/res-screen/main',
+                'src/main/res-screen/detail',
         ]
     }
 }

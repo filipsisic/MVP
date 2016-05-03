@@ -1,35 +1,35 @@
 package com.vasko.mvp.main;
 
-import com.vasko.mvp.data.Repo;
+import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.List;
 
 class MainInterfaces {
 
-    public interface AtoP {
+    interface AtoP {
 
         void loadRepo(String username);
 
     }
 
-    public interface PtoM {
+    interface PtoM {
 
         void loadRepo(String username);
 
     }
 
-    public interface MtoP {
+    interface MtoP {
 
-        void onHighlightsSuccess(List<Repo> repos);
+        void onRepoSuccess(List<GitHubRepo> repos);
 
-        void onHighlightsError();
+        void onRepoError();
 
     }
 
 
-    public interface PtoA {
+    interface PtoA {
 
-        void showList(List<Repo> repos);
+        void showList(List<GitHubRepo> repos);
 
         void showError();
 
