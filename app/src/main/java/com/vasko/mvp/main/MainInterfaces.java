@@ -6,7 +6,7 @@ import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.List;
 
-class MainInterfaces {
+interface MainInterfaces {
 
     interface PresenterInterface {
 

@@ -1,36 +1,30 @@
 package com.vasko.mvp.base;
 
-public abstract class BasePresenter implements Lifecycle {
+public abstract class BasePresenter {
 
     protected abstract BaseModel getModel();
 
-    @Override
-    public void onCreate() {
+    protected void onCreate() {
 
     }
 
-    @Override
-    public void onStart() {
+    protected void onStart() {
 
     }
 
-    @Override
-    public void onResume() {
+    protected void onResume() {
 
     }
 
-    @Override
-    public void onPause() {
+    protected void onPause() {
 
     }
 
-    @Override
-    public void onStop() {
+    protected void onStop() {
         getModel().cancelAll();
     }
 
-    @Override
-    public void onDestroy() {
+    protected void onDestroy() {
 
     }
 }
