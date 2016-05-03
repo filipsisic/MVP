@@ -95,6 +95,7 @@ public class MainActivity extends BaseActivity implements MainInterfaces.Activit
 
             @Override
             public void afterTextChanged(Editable s) {
+                adapter.clear();
                 openButton.setVisibility(View.GONE);
             }
         };

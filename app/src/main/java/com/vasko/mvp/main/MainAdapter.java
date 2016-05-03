@@ -29,6 +29,10 @@ class MainAdapter extends BaseAdapter {
         super.notifyDataSetChanged();
     }
 
+    public void clear() {
+        list.clear();
+    }
+
     @Override
     public int getCount() {
         return list.size();
