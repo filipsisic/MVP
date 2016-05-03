@@ -2,6 +2,7 @@
     <string name="app_name">MVP</string>
     <string name="username">Username</string>
     <string name="load">Load</string>
+    <string name="open">Open</string>
     <string name="no_user_on_git_hub">Username don\'t exist on GitHub</string>
     <string name="no_user_details">No user details</string>
 </resources>

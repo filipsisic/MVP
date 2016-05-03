@@ -15,7 +15,7 @@ public class Keyboard {
         hideFrom(activity, view);
     }
 
-    public static void hideFrom(Context context, View view) {
+    private static void hideFrom(Context context, View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }

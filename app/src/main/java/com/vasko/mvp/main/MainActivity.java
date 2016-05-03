@@ -30,15 +30,22 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
 
         ListView listView = (ListView) findViewById(R.id.main_list);
         final EditText editText = (EditText) findViewById(R.id.main_edit);
-        Button button = (Button) findViewById(R.id.main_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button openButton = (Button) findViewById(R.id.detail_button);
+        openButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = editText.getText().toString().trim();
+                startDetailActivity(username);
+            }
+        });
+        Button loadButton = (Button) findViewById(R.id.main_button);
+        loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = editText.getText().toString().trim();
                 presenter.loadRepo(username);
                 Keyboard.hide(MainActivity.this);
-
-                startDetailActivity(username);
+                openButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -53,7 +60,7 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
         return presenter;
     }
 
-    public void startDetailActivity(String username) {
+    private void startDetailActivity(String username) {
         Intent starter = new Intent(this, DetailActivity.class);
         starter.putExtra(DetailActivity.USERNAME, username);
         startActivity(starter);

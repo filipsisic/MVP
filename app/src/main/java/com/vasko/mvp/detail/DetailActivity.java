@@ -28,6 +28,8 @@ public class DetailActivity extends BaseActivity implements DetailInterfaces.Pto
         if (getIntent() != null) {
             String username = getIntent().getStringExtra(USERNAME);
             presenter.loadUser(username);
+        } else {
+            showError();
         }
 
     }

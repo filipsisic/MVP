@@ -14,23 +14,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:animateLayoutChanges="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/main_edit"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/username"
-            android:layout_height="wrap_content"/>
+            android:hint="@string/username"/>
 
         <Button
             android:id="@+id/main_button"
-            android:text="@string/load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"
+            android:text="@string/load"/>
+
+        <Button
+            android:id="@+id/detail_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:text="@string/open"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
