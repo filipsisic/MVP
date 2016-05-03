@@ -13,10 +13,10 @@ import com.vasko.mvp.data.Repo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainAdapter extends BaseAdapter {
+class MainAdapter extends BaseAdapter {
 
-    private Context context;
-    private List<Repo> list;
+    private final Context context;
+    private final List<Repo> list;
 
     public MainAdapter(Context context) {
         this.context = context;

@@ -1,5 +1,6 @@
 package com.vasko.mvp.data;
 
+@SuppressWarnings("unused")
 public class Repo {
 
     private int id;

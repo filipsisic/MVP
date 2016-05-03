@@ -1,6 +1,6 @@
 package com.vasko.mvp.base;
 
-public interface Lifecycle {
+interface Lifecycle {
 
     void onCreate();
 

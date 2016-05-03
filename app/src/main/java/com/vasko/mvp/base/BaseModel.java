@@ -8,14 +8,14 @@ import retrofit2.Callback;
 
 public abstract class BaseModel {
 
-    private List<Call> calls = new ArrayList<>();
+    private final List<Call> calls = new ArrayList<>();
 
-    public <T> void network(Call<T> call, Callback<T> callback) {
+    protected <T> void network(Call<T> call, Callback<T> callback) {
         calls.add(call);
         call.enqueue(callback);
     }
 
-    public void cancelAll() {
+    void cancelAll() {
         for (Call call : calls) {
             call.cancel();
         }

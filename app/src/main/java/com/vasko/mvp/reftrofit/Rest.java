@@ -10,7 +10,7 @@ import static okhttp3.logging.HttpLoggingInterceptor.Level.BASIC;
 public class Rest {
 
     private static final String HTTPS = "https://api.github.com/";
-    private static Network mainClient;
+    private static final Network mainClient;
 
     static {
 

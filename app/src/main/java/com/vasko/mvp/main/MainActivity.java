@@ -28,7 +28,6 @@ public class MainActivity extends BaseActivity implements MainInterfaces.PtoA {
 
         ListView listView = (ListView) findViewById(R.id.main_list);
         final EditText editText = (EditText) findViewById(R.id.main_edit);
-        editText.setText("dvasko");
         Button button = (Button) findViewById(R.id.main_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,7 +12,7 @@ import retrofit2.Response;
 
 public class MainModel extends BaseModel implements MainInterfaces.PtoM {
 
-    private MainInterfaces.MtoP presenter;
+    private final MainInterfaces.MtoP presenter;
 
     public MainModel(MainPresenter presenter) {
         this.presenter = presenter;

@@ -2,7 +2,7 @@ package com.vasko.mvp.base;
 
 public abstract class BasePresenter implements Lifecycle {
 
-    public abstract BaseModel getModel();
+    protected abstract BaseModel getModel();
 
     @Override
     public void onCreate() {

@@ -4,7 +4,7 @@ import com.vasko.mvp.data.Repo;
 
 import java.util.List;
 
-public class MainInterfaces {
+class MainInterfaces {
 
     public interface AtoP {
 

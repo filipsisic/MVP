@@ -21,13 +21,14 @@
             android:id="@+id/main_edit"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:hint="Username"
+            android:hint="@string/username"
             android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/main_button"
-            android:text="Load"
+            android:text="@string/load"
             android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

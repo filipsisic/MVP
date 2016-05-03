@@ -9,8 +9,8 @@ import java.util.List;
 
 public class MainPresenter extends BasePresenter implements MainInterfaces.AtoP, MainInterfaces.MtoP {
 
-    private MainInterfaces.PtoA view;
-    private MainModel model;
+    private final MainInterfaces.PtoA view;
+    private final MainModel model;
 
     public MainPresenter(MainInterfaces.PtoA view) {
         this.view = view;
