@@ -26,11 +26,12 @@ class MainAdapter extends BaseAdapter {
     public void notifyDataSetChanged(List<GitHubRepo> list) {
         this.list.clear();
         this.list.addAll(list);
-        super.notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     public void clear() {
         list.clear();
+        notifyDataSetChanged();
     }
 
     @Override

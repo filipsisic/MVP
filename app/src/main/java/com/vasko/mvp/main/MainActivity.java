@@ -36,21 +36,15 @@ public class MainActivity extends BaseActivity implements MainInterfaces.Activit
         final EditText editText = (EditText) findViewById(R.id.main_edit);
         editText.addTextChangedListener(getTextListener());
         openButton = (Button) findViewById(R.id.detail_button);
-        openButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = editText.getText().toString().trim();
-                startDetailActivity(username);
-            }
+        openButton.setOnClickListener(v -> {
+            String username = editText.getText().toString().trim();
+            startDetailActivity(username);
         });
         Button loadButton = (Button) findViewById(R.id.main_button);
-        loadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = editText.getText().toString().trim();
-                presenterInterface.loadRepo(username);
-                Keyboard.hide(MainActivity.this);
-            }
+        loadButton.setOnClickListener(v -> {
+            String username = editText.getText().toString().trim();
+            presenterInterface.loadRepo(username);
+            Keyboard.hide(MainActivity.this);
         });
 
         adapter = new MainAdapter(this);
@@ -100,7 +94,6 @@ public class MainActivity extends BaseActivity implements MainInterfaces.Activit
             }
         };
     }
-
 
 
 }

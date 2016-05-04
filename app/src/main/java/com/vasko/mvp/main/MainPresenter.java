@@ -4,8 +4,9 @@ import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import rx.Observable;
 
 public class MainPresenter extends BasePresenter implements MainInterfaces.PresenterInterface, MainInterfaces.PresenterCallback {
 
@@ -29,13 +30,7 @@ public class MainPresenter extends BasePresenter implements MainInterfaces.Prese
 
     @Override
     public void onRepoSuccess(List<GitHubRepo> repos) {
-        List<GitHubRepo> list = new ArrayList<>();
-        for (GitHubRepo repo : repos) {
-            if (repo.isFork()) {
-                list.add(repo);
-            }
-        }
-        view.showList(list);
+        Observable.from(repos).filter(GitHubRepo::isFork).toList().subscribe(view::showList);
     }
 
     @Override
