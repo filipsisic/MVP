@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "24.0.0 rc3"
 
     defaultConfig {
         applicationId "com.vasko.mvp"
@@ -15,6 +15,7 @@ android {
             enabled true
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
