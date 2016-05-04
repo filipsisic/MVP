@@ -21,7 +21,7 @@ public class UserActivity extends BaseActivity implements ActivityInterface {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_activity);
+        setContentView(R.layout.user_activity);
         userName = (TextView) findViewById(R.id.user_name);
         userCompany = (TextView) findViewById(R.id.user_company);
 
