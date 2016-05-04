@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion "android-N"
     buildToolsVersion "24.0.0 rc3"
 
     defaultConfig {
         applicationId "com.vasko.mvp"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion "android-N"
         versionCode 1
         versionName "1.0"
 

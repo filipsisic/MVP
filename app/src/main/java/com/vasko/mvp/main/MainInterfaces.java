@@ -6,7 +6,6 @@ import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.List;
 
-@SuppressWarnings("unused")
 interface MainInterfaces {
 
     interface PresenterInterface extends BasePresenterInterface {
