@@ -3,33 +3,24 @@ package com.vasko.mvp.main;
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
-import com.vasko.mvp.main.MainInterfaces.ActivityInterface;
-import com.vasko.mvp.main.MainInterfaces.ModelInterface;
-import com.vasko.mvp.main.MainInterfaces.PresenterCallback;
-import com.vasko.mvp.main.MainInterfaces.PresenterInterface;
 
 import java.util.List;
 
 import rx.Observable;
 
-public class MainPresenter extends BasePresenter implements PresenterInterface, PresenterCallback {
+class MainPresenter extends BasePresenter implements MainPresenterInterface {
 
-    private final ActivityInterface view;
-    private final ModelInterface model;
+    private final MainActivityInterface view;
+    private final MainModel model;
 
-    public MainPresenter(ActivityInterface view) {
+    public MainPresenter(MainActivityInterface view) {
         this.view = view;
         model = new MainModel(this);
     }
 
     @Override
-    public BasePresenter getPresenter() {
-        return this;
-    }
-
-    @Override
     public BaseModel getModel() {
-        return model.getModel();
+        return model;
     }
 
     @Override
@@ -42,7 +33,6 @@ public class MainPresenter extends BasePresenter implements PresenterInterface, 
         view.showError();
     }
 
-    @Override
     public void loadRepo(String username) {
         model.loadRepo(username);
     }

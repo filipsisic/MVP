@@ -8,14 +8,12 @@ import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
-import com.vasko.mvp.user.UserInterfaces.ActivityInterface;
-import com.vasko.mvp.user.UserInterfaces.PresenterInterface;
 
-public class UserActivity extends BaseActivity implements ActivityInterface {
+public class UserActivity extends BaseActivity implements UserActivityInterface {
 
     public static final String USERNAME = "USERNAME";
 
-    private PresenterInterface presenter;
+    private UserPresenter presenter;
     private TextView userName, userCompany;
 
     @Override
@@ -38,7 +36,7 @@ public class UserActivity extends BaseActivity implements ActivityInterface {
 
     @Override
     public BasePresenter getPresenter() {
-        return presenter.getPresenter();
+        return presenter;
     }
 
     @Override

@@ -15,17 +15,15 @@ import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 import com.vasko.mvp.helper.Keyboard;
-import com.vasko.mvp.main.MainInterfaces.ActivityInterface;
-import com.vasko.mvp.main.MainInterfaces.PresenterInterface;
 import com.vasko.mvp.user.UserActivity;
 
 import java.util.List;
 
 @SuppressWarnings("ConstantConditions")
-public class MainActivity extends BaseActivity implements ActivityInterface {
+public class MainActivity extends BaseActivity implements MainActivityInterface {
 
     private MainAdapter adapter;
-    private PresenterInterface presenterInterface;
+    private MainPresenter presenter;
     private Button openButton;
 
     @Override
@@ -44,19 +42,19 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
         Button loadButton = (Button) findViewById(R.id.main_button);
         loadButton.setOnClickListener(v -> {
             String username = editText.getText().toString().trim();
-            presenterInterface.loadRepo(username);
+            presenter.loadRepo(username);
             Keyboard.hide(MainActivity.this);
         });
 
         adapter = new MainAdapter(this);
-        presenterInterface = new MainPresenter(this);
+        presenter = new MainPresenter(this);
 
         listView.setAdapter(adapter);
     }
 
     @Override
     public BasePresenter getPresenter() {
-        return presenterInterface.getPresenter();
+        return presenter;
     }
 
     private void startDetailActivity(String username) {

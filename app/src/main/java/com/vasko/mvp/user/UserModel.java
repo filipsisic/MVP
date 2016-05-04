@@ -2,23 +2,15 @@ package com.vasko.mvp.user;
 
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.reftrofit.Rest;
-import com.vasko.mvp.user.UserInterfaces.ModelInterface;
-import com.vasko.mvp.user.UserInterfaces.PresenterCallback;
 
-public class UserModel extends BaseModel implements ModelInterface {
+class UserModel extends BaseModel {
 
-    private final PresenterCallback presenterCallback;
+    private final UserPresenterInterface presenterCallback;
 
-    public UserModel(PresenterCallback presenterCallback) {
+    public UserModel(UserPresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 
-    @Override
-    public BaseModel getModel() {
-        return this;
-    }
-
-    @Override
     public void loadUser(String username) {
         network(Rest.getClient().user(username),
                 presenterCallback::onUserSuccess,
