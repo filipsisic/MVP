@@ -10,8 +10,8 @@ import rx.Observable;
 
 class RepoPresenter extends BasePresenter implements PresenterInterface {
 
-    private ActivityInterface view;
-    private RepoModel model;
+    private final ActivityInterface view;
+    private final RepoModel model;
 
     public RepoPresenter(ActivityInterface view) {
         this.view = view;

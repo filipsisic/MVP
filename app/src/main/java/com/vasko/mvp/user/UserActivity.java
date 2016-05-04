@@ -41,7 +41,11 @@ public class UserActivity extends BaseActivity implements ActivityInterface {
 
     @Override
     public void showUser(GitHubUser user) {
-        userName.setText(user.getName());
+        if (user.getName() != null) {
+            userName.setText(user.getName());
+        } else {
+            userName.setText(user.getLogin());
+        }
         userCompany.setText(user.getCompany());
     }
 

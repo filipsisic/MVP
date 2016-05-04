@@ -5,7 +5,7 @@ import com.vasko.mvp.reftrofit.Rest;
 
 class RepoModel extends BaseModel {
 
-    private PresenterInterface presenterCallback;
+    private final PresenterInterface presenterCallback;
 
     public RepoModel(PresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
