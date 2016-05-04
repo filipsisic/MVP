@@ -3,17 +3,21 @@ package com.vasko.mvp.main;
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
+import com.vasko.mvp.main.MainInterfaces.ActivityInterface;
+import com.vasko.mvp.main.MainInterfaces.ModelInterface;
+import com.vasko.mvp.main.MainInterfaces.PresenterCallback;
+import com.vasko.mvp.main.MainInterfaces.PresenterInterface;
 
 import java.util.List;
 
 import rx.Observable;
 
-public class MainPresenter extends BasePresenter implements MainInterfaces.PresenterInterface, MainInterfaces.PresenterCallback {
+public class MainPresenter extends BasePresenter implements PresenterInterface, PresenterCallback {
 
-    private final MainInterfaces.ActivityInterface view;
-    private final MainInterfaces.ModelInterface model;
+    private final ActivityInterface view;
+    private final ModelInterface model;
 
-    public MainPresenter(MainInterfaces.ActivityInterface view) {
+    public MainPresenter(ActivityInterface view) {
         this.view = view;
         model = new MainModel(this);
     }

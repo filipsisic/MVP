@@ -1,4 +1,4 @@
-package com.vasko.mvp.detail;
+package com.vasko.mvp.user;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -8,12 +8,14 @@ import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
+import com.vasko.mvp.user.UserInterfaces.ActivityInterface;
+import com.vasko.mvp.user.UserInterfaces.PresenterInterface;
 
-public class DetailActivity extends BaseActivity implements DetailInterfaces.ActivityInterface {
+public class UserActivity extends BaseActivity implements ActivityInterface {
 
     public static final String USERNAME = "USERNAME";
 
-    private DetailInterfaces.PresenterInterface presenter;
+    private PresenterInterface presenter;
     private TextView userName, userCompany;
 
     @Override
@@ -23,7 +25,7 @@ public class DetailActivity extends BaseActivity implements DetailInterfaces.Act
         userName = (TextView) findViewById(R.id.user_name);
         userCompany = (TextView) findViewById(R.id.user_company);
 
-        presenter = new DetailPresenter(this);
+        presenter = new UserPresenter(this);
 
         if (getIntent() != null) {
             String username = getIntent().getStringExtra(USERNAME);

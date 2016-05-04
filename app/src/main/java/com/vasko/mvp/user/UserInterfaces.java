@@ -1,38 +1,36 @@
-package com.vasko.mvp.main;
+package com.vasko.mvp.user;
 
 import com.vasko.mvp.base.BaseModelInterface;
 import com.vasko.mvp.base.BasePresenterInterface;
-import com.vasko.mvp.data.GitHubRepo;
-
-import java.util.List;
+import com.vasko.mvp.data.GitHubUser;
 
 @SuppressWarnings("unused")
-interface MainInterfaces {
+interface UserInterfaces {
 
     interface PresenterInterface extends BasePresenterInterface {
 
-        void loadRepo(String username);
+        void loadUser(String username);
 
     }
 
     interface ModelInterface extends BaseModelInterface {
 
-        void loadRepo(String username);
+        void loadUser(String username);
 
     }
 
     interface PresenterCallback {
 
-        void onRepoSuccess(List<GitHubRepo> repos);
+        void onUserSuccess(GitHubUser user);
 
-        void onRepoError();
+        void onUserError();
 
     }
 
 
     interface ActivityInterface {
 
-        void showList(List<GitHubRepo> repos);
+        void showUser(GitHubUser user);
 
         void showError();
 

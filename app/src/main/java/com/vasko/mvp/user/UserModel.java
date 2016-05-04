@@ -1,13 +1,15 @@
-package com.vasko.mvp.detail;
+package com.vasko.mvp.user;
 
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.reftrofit.Rest;
+import com.vasko.mvp.user.UserInterfaces.ModelInterface;
+import com.vasko.mvp.user.UserInterfaces.PresenterCallback;
 
-public class DetailModel extends BaseModel implements DetailInterfaces.ModelInterface {
+public class UserModel extends BaseModel implements ModelInterface {
 
-    private final DetailInterfaces.PresenterCallback presenterCallback;
+    private final PresenterCallback presenterCallback;
 
-    public DetailModel(DetailInterfaces.PresenterCallback presenterCallback) {
+    public UserModel(PresenterCallback presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 

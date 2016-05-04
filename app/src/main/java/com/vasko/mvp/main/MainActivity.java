@@ -14,14 +14,15 @@ import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
-import com.vasko.mvp.detail.DetailActivity;
 import com.vasko.mvp.helper.Keyboard;
+import com.vasko.mvp.main.MainInterfaces.ActivityInterface;
 import com.vasko.mvp.main.MainInterfaces.PresenterInterface;
+import com.vasko.mvp.user.UserActivity;
 
 import java.util.List;
 
 @SuppressWarnings("ConstantConditions")
-public class MainActivity extends BaseActivity implements MainInterfaces.ActivityInterface {
+public class MainActivity extends BaseActivity implements ActivityInterface {
 
     private MainAdapter adapter;
     private PresenterInterface presenterInterface;
@@ -59,8 +60,8 @@ public class MainActivity extends BaseActivity implements MainInterfaces.Activit
     }
 
     private void startDetailActivity(String username) {
-        Intent starter = new Intent(this, DetailActivity.class);
-        starter.putExtra(DetailActivity.USERNAME, username);
+        Intent starter = new Intent(this, UserActivity.class);
+        starter.putExtra(UserActivity.USERNAME, username);
         startActivity(starter);
     }
 
