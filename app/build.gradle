@@ -33,6 +33,7 @@ android {
                 'src/main/res',
                 'src/main/res-screen/main',
                 'src/main/res-screen/user',
+                'src/main/res-screen/repo',
         ]
     }
 }

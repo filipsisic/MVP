@@ -4,7 +4,7 @@ import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.List;
 
-interface MainPresenterInterface {
+interface PresenterInterface {
 
     void onRepoSuccess(List<GitHubRepo> repos);
 

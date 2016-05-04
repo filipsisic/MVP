@@ -17,4 +17,7 @@ public interface Network {
     @GET("users/{username}/repos")
     Observable<List<GitHubRepo>> repositories(@Path("username") String username);
 
+    @GET("repos/{username}/{repo}/contributors")
+    Observable<List<GitHubUser>> contributors(@Path("username") String username, @Path("repo") String repo);
+
 }

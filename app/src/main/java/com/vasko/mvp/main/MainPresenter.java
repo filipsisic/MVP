@@ -8,12 +8,12 @@ import java.util.List;
 
 import rx.Observable;
 
-class MainPresenter extends BasePresenter implements MainPresenterInterface {
+class MainPresenter extends BasePresenter implements PresenterInterface {
 
-    private final MainActivityInterface view;
+    private final ActivityInterface view;
     private final MainModel model;
 
-    public MainPresenter(MainActivityInterface view) {
+    public MainPresenter(ActivityInterface view) {
         this.view = view;
         model = new MainModel(this);
     }
@@ -33,8 +33,8 @@ class MainPresenter extends BasePresenter implements MainPresenterInterface {
         view.showError();
     }
 
-    public void loadRepo(String username) {
-        model.loadRepo(username);
+    public void loadRepo(String userName) {
+        model.loadRepo(userName);
     }
 
 }

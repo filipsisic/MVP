@@ -4,7 +4,7 @@ import com.vasko.mvp.data.GitHubRepo;
 
 import java.util.List;
 
-interface MainActivityInterface {
+interface ActivityInterface {
 
     void showList(List<GitHubRepo> repos);
 

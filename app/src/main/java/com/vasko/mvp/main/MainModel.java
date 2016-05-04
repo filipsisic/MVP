@@ -5,14 +5,14 @@ import com.vasko.mvp.reftrofit.Rest;
 
 class MainModel extends BaseModel {
 
-    private final MainPresenterInterface presenterCallback;
+    private final PresenterInterface presenterCallback;
 
-    public MainModel(MainPresenterInterface presenterCallback) {
+    public MainModel(PresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 
-    public void loadRepo(String username) {
-        network(Rest.getClient().repositories(username),
+    public void loadRepo(String userName) {
+        network(Rest.getClient().repositories(userName),
                 presenterCallback::onRepoSuccess,
                 throwable -> presenterCallback.onRepoError());
     }

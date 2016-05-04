@@ -5,14 +5,14 @@ import com.vasko.mvp.reftrofit.Rest;
 
 class UserModel extends BaseModel {
 
-    private final UserPresenterInterface presenterCallback;
+    private final PresenterInterface presenterCallback;
 
-    public UserModel(UserPresenterInterface presenterCallback) {
+    UserModel(PresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 
-    public void loadUser(String username) {
-        network(Rest.getClient().user(username),
+    void loadUser(String userName) {
+        network(Rest.getClient().user(userName),
                 presenterCallback::onUserSuccess,
                 throwable -> presenterCallback.onUserError());
     }

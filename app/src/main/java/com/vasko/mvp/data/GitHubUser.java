@@ -6,6 +6,7 @@ public class GitHubUser {
     private int id;
     private String name;
     private String company;
+    private int contributions;
 
     public int getId() {
         return id;
@@ -17,5 +18,9 @@ public class GitHubUser {
 
     public String getCompany() {
         return company;
+    }
+
+    public int getContributions() {
+        return contributions;
     }
 }

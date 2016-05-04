@@ -2,7 +2,7 @@ package com.vasko.mvp.user;
 
 import com.vasko.mvp.data.GitHubUser;
 
-interface UserActivityInterface {
+interface ActivityInterface {
 
     void showUser(GitHubUser user);
 

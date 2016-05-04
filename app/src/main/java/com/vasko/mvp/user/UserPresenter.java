@@ -4,12 +4,12 @@ import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 
-class UserPresenter extends BasePresenter implements UserPresenterInterface {
+class UserPresenter extends BasePresenter implements PresenterInterface {
 
-    private final UserActivityInterface view;
+    private final ActivityInterface view;
     private final UserModel model;
 
-    public UserPresenter(UserActivityInterface view) {
+    public UserPresenter(ActivityInterface view) {
         this.view = view;
         model = new UserModel(this);
     }
@@ -19,8 +19,8 @@ class UserPresenter extends BasePresenter implements UserPresenterInterface {
         return model;
     }
 
-    public void loadUser(String username) {
-        model.loadUser(username);
+    public void loadUser(String userName) {
+        model.loadUser(userName);
     }
 
     @Override

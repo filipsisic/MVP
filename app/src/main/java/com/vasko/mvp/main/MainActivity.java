@@ -15,12 +15,16 @@ import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 import com.vasko.mvp.helper.Keyboard;
+import com.vasko.mvp.repo.RepoActivity;
 import com.vasko.mvp.user.UserActivity;
 
 import java.util.List;
 
+import static com.vasko.mvp.repo.RepoActivity.REPO_NAME;
+import static com.vasko.mvp.user.UserActivity.USERNAME;
+
 @SuppressWarnings("ConstantConditions")
-public class MainActivity extends BaseActivity implements MainActivityInterface {
+public class MainActivity extends BaseActivity implements ActivityInterface {
 
     private MainAdapter adapter;
     private MainPresenter presenter;
@@ -31,18 +35,23 @@ public class MainActivity extends BaseActivity implements MainActivityInterface 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        ListView listView = (ListView) findViewById(R.id.main_list);
         final EditText editText = (EditText) findViewById(R.id.main_edit);
         editText.addTextChangedListener(getTextListener());
+        ListView listView = (ListView) findViewById(R.id.main_list);
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            String userName = editText.getText().toString().trim();
+            GitHubRepo repo = ((MainAdapter) adapterView.getAdapter()).getItem(i);
+            startRepoActivity(userName, repo.getName());
+        });
         openButton = (Button) findViewById(R.id.detail_button);
         openButton.setOnClickListener(v -> {
-            String username = editText.getText().toString().trim();
-            startDetailActivity(username);
+            String userName = editText.getText().toString().trim();
+            startUserActivity(userName);
         });
         Button loadButton = (Button) findViewById(R.id.main_button);
         loadButton.setOnClickListener(v -> {
-            String username = editText.getText().toString().trim();
-            presenter.loadRepo(username);
+            String userName = editText.getText().toString().trim();
+            presenter.loadRepo(userName);
             Keyboard.hide(MainActivity.this);
         });
 
@@ -57,9 +66,16 @@ public class MainActivity extends BaseActivity implements MainActivityInterface 
         return presenter;
     }
 
-    private void startDetailActivity(String username) {
+    private void startUserActivity(String userName) {
         Intent starter = new Intent(this, UserActivity.class);
-        starter.putExtra(UserActivity.USERNAME, username);
+        starter.putExtra(USERNAME, userName);
+        startActivity(starter);
+    }
+
+    private void startRepoActivity(String userName, String repoName) {
+        Intent starter = new Intent(this, RepoActivity.class);
+        starter.putExtra(USERNAME, userName);
+        starter.putExtra(REPO_NAME, repoName);
         startActivity(starter);
     }
 

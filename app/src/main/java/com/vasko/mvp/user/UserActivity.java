@@ -9,7 +9,7 @@ import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 
-public class UserActivity extends BaseActivity implements UserActivityInterface {
+public class UserActivity extends BaseActivity implements ActivityInterface {
 
     public static final String USERNAME = "USERNAME";
 
@@ -26,8 +26,8 @@ public class UserActivity extends BaseActivity implements UserActivityInterface 
         presenter = new UserPresenter(this);
 
         if (getIntent() != null) {
-            String username = getIntent().getStringExtra(USERNAME);
-            presenter.loadUser(username);
+            String userName = getIntent().getStringExtra(USERNAME);
+            presenter.loadUser(userName);
         } else {
             showError();
         }
