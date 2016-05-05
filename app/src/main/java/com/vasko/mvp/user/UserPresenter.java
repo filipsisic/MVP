@@ -19,8 +19,8 @@ class UserPresenter extends BasePresenter implements PresenterInterface {
         return model;
     }
 
-    public void loadUser(String userName) {
-        model.loadUser(userName);
+    public void loadUser(String login) {
+        model.loadUser(login);
     }
 
     @Override

@@ -33,7 +33,7 @@ class RepoPresenter extends BasePresenter implements PresenterInterface {
         return model;
     }
 
-    public void loadContributors(String userName, String repoName) {
-        model.loadUsers(userName, repoName);
+    public void loadContributors(String login, String repoName) {
+        model.loadUsers(login, repoName);
     }
 }

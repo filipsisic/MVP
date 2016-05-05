@@ -21,7 +21,7 @@ import com.vasko.mvp.user.UserActivity;
 import java.util.List;
 
 import static com.vasko.mvp.repo.RepoActivity.REPO_NAME;
-import static com.vasko.mvp.user.UserActivity.USERNAME;
+import static com.vasko.mvp.user.UserActivity.LOGIN;
 
 @SuppressWarnings("ConstantConditions")
 public class MainActivity extends BaseActivity implements ActivityInterface {
@@ -39,19 +39,19 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
         editText.addTextChangedListener(getTextListener());
         ListView listView = (ListView) findViewById(R.id.main_list);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            String userName = editText.getText().toString().trim();
+            String login = editText.getText().toString().trim();
             GitHubRepo repo = ((MainAdapter) adapterView.getAdapter()).getItem(i);
-            startRepoActivity(userName, repo.getName());
+            startRepoActivity(login, repo.getName());
         });
         openButton = (Button) findViewById(R.id.detail_button);
         openButton.setOnClickListener(v -> {
-            String userName = editText.getText().toString().trim();
-            startUserActivity(userName);
+            String login = editText.getText().toString().trim();
+            startUserActivity(login);
         });
         Button loadButton = (Button) findViewById(R.id.main_button);
         loadButton.setOnClickListener(v -> {
-            String userName = editText.getText().toString().trim();
-            presenter.loadRepo(userName);
+            String login = editText.getText().toString().trim();
+            presenter.loadRepo(login);
             Keyboard.hide(MainActivity.this);
         });
 
@@ -66,15 +66,15 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
         return presenter;
     }
 
-    private void startUserActivity(String userName) {
+    private void startUserActivity(String login) {
         Intent starter = new Intent(this, UserActivity.class);
-        starter.putExtra(USERNAME, userName);
+        starter.putExtra(LOGIN, login);
         startActivity(starter);
     }
 
-    private void startRepoActivity(String userName, String repoName) {
+    private void startRepoActivity(String login, String repoName) {
         Intent starter = new Intent(this, RepoActivity.class);
-        starter.putExtra(USERNAME, userName);
+        starter.putExtra(LOGIN, login);
         starter.putExtra(REPO_NAME, repoName);
         startActivity(starter);
     }

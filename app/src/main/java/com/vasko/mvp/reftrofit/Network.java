@@ -11,13 +11,13 @@ import rx.Observable;
 
 public interface Network {
 
-    @GET("users/{username}")
-    Observable<GitHubUser> user(@Path("username") String username);
+    @GET("users/{login}")
+    Observable<GitHubUser> user(@Path("login") String login);
 
-    @GET("users/{username}/repos")
-    Observable<List<GitHubRepo>> repositories(@Path("username") String username);
+    @GET("users/{login}/repos")
+    Observable<List<GitHubRepo>> repositories(@Path("login") String login);
 
-    @GET("repos/{username}/{repo}/contributors")
-    Observable<List<GitHubUser>> contributors(@Path("username") String username, @Path("repo") String repo);
+    @GET("repos/{login}/{repo}/contributors")
+    Observable<List<GitHubUser>> contributors(@Path("login") String login, @Path("repo") String repo);
 
 }

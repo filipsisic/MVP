@@ -33,8 +33,8 @@ class MainPresenter extends BasePresenter implements PresenterInterface {
         view.showError();
     }
 
-    public void loadRepo(String userName) {
-        model.loadRepo(userName);
+    public void loadRepo(String login) {
+        model.loadRepo(login);
     }
 
 }

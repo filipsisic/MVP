@@ -11,7 +11,7 @@ import com.vasko.mvp.data.GitHubUser;
 
 import java.util.List;
 
-import static com.vasko.mvp.user.UserActivity.USERNAME;
+import static com.vasko.mvp.user.UserActivity.LOGIN;
 
 @SuppressWarnings("ConstantConditions")
 public class RepoActivity extends BaseActivity implements ActivityInterface {
@@ -33,9 +33,9 @@ public class RepoActivity extends BaseActivity implements ActivityInterface {
         listView.setAdapter(adapter);
 
         if (getIntent() != null) {
-            String userName = getIntent().getStringExtra(USERNAME);
+            String login = getIntent().getStringExtra(LOGIN);
             String repoName = getIntent().getStringExtra(REPO_NAME);
-            presenter.loadContributors(userName, repoName);
+            presenter.loadContributors(login, repoName);
         } else {
             showError();
         }

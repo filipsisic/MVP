@@ -16,8 +16,8 @@ class MainModel extends BaseModel {
         this.presenterCallback = presenterCallback;
     }
 
-    public void loadRepo(String userName) {
-        Observable<List<GitHubRepo>> networkRepos = Rest.getClient().repositories(userName);
+    public void loadRepo(String login) {
+        Observable<List<GitHubRepo>> networkRepos = Rest.getClient().repositories(login);
         execute(networkRepos,
                 presenterCallback::onRepoSuccess,
                 throwable -> presenterCallback.onRepoError());

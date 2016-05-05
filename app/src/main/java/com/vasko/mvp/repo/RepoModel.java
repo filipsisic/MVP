@@ -16,8 +16,8 @@ class RepoModel extends BaseModel {
         this.presenterCallback = presenterCallback;
     }
 
-    public void loadUsers(String userName, String repoName) {
-        Observable<List<GitHubUser>> networkUsers = Rest.getClient().contributors(userName, repoName);
+    public void loadUsers(String login, String repoName) {
+        Observable<List<GitHubUser>> networkUsers = Rest.getClient().contributors(login, repoName);
         execute(networkUsers,
                 presenterCallback::onContributorsSuccess,
                 throwable -> presenterCallback.onContributorsError());

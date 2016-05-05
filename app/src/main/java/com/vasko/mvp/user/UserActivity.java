@@ -11,7 +11,7 @@ import com.vasko.mvp.data.GitHubUser;
 
 public class UserActivity extends BaseActivity implements ActivityInterface {
 
-    public static final String USERNAME = "USERNAME";
+    public static final String LOGIN = "LOGIN";
 
     private UserPresenter presenter;
     private TextView userName, userCompany;
@@ -26,8 +26,8 @@ public class UserActivity extends BaseActivity implements ActivityInterface {
         presenter = new UserPresenter(this);
 
         if (getIntent() != null) {
-            String userName = getIntent().getStringExtra(USERNAME);
-            presenter.loadUser(userName);
+            String login = getIntent().getStringExtra(LOGIN);
+            presenter.loadUser(login);
         } else {
             showError();
         }
