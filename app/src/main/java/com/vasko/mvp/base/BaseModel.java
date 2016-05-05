@@ -12,7 +12,7 @@ public abstract class BaseModel {
 
     private final List<Subscription> subscriptions = new ArrayList<>();
 
-    protected <T> void network(Observable<T> call, Action1<T> success, Action1<Throwable> error) {
+    protected <T> void execute(Observable<T> call, Action1<T> success, Action1<Throwable> error) {
         Subscription subscription = call
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(success, error);
