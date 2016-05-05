@@ -12,11 +12,11 @@ class MainModel extends BaseModel {
 
     private final PresenterInterface presenterCallback;
 
-    MainModel(PresenterInterface presenterCallback) {
+    public MainModel(PresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 
-    void loadRepo(String userName) {
+    public void loadRepo(String userName) {
         Observable<List<GitHubRepo>> networkRepos = Rest.getClient().repositories(userName);
         execute(networkRepos,
                 presenterCallback::onRepoSuccess,

@@ -12,11 +12,11 @@ class RepoModel extends BaseModel {
 
     private final PresenterInterface presenterCallback;
 
-    RepoModel(PresenterInterface presenterCallback) {
+    public RepoModel(PresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 
-    void loadUsers(String userName, String repoName) {
+    public void loadUsers(String userName, String repoName) {
         Observable<List<GitHubUser>> networkUsers = Rest.getClient().contributors(userName, repoName);
         execute(networkUsers,
                 presenterCallback::onContributorsSuccess,

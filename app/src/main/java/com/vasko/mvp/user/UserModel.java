@@ -10,11 +10,11 @@ class UserModel extends BaseModel {
 
     private final PresenterInterface presenterCallback;
 
-    UserModel(PresenterInterface presenterCallback) {
+    public UserModel(PresenterInterface presenterCallback) {
         this.presenterCallback = presenterCallback;
     }
 
-    void loadUser(String userName) {
+    public void loadUser(String userName) {
         Observable<GitHubUser> networkUser = Rest.getClient().user(userName);
         execute(networkUser,
                 presenterCallback::onUserSuccess,
