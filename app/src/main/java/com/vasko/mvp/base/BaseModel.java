@@ -20,6 +20,7 @@ public abstract class BaseModel {
     }
 
     void cancelAll() {
+        //noinspection Convert2streamapi
         for (Subscription subscription : subscriptions) {
             subscription.unsubscribe();
         }

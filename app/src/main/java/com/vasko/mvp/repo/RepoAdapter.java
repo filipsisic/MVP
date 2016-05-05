@@ -40,11 +40,6 @@ class RepoAdapter extends BaseAdapter {
     }
 
     @Override
-    public boolean isEnabled(int position) {
-        return false;
-    }
-
-    @Override
     public long getItemId(int i) {
         return 0;
     }

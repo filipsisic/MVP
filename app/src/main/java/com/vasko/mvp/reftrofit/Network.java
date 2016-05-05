@@ -20,4 +20,7 @@ public interface Network {
     @GET("repos/{login}/{repo}/contributors")
     Observable<List<GitHubUser>> contributors(@Path("login") String login, @Path("repo") String repo);
 
+    @GET("users/{login}/followers")
+    Observable<List<GitHubUser>> followers(@Path("login") String login);
+
 }
