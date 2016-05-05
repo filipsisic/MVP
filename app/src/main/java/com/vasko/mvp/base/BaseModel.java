@@ -20,7 +20,9 @@ public abstract class BaseModel {
     }
 
     void cancelAll() {
-        subscriptions.forEach(Subscription::unsubscribe);
+        for (Subscription subscription : subscriptions) {
+            subscription.unsubscribe();
+        }
         subscriptions.clear();
     }
 }
