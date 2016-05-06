@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.vasko.mvp.R;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
     private MainAdapter adapter;
     private MainPresenter presenter;
     private Button openButton;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +52,12 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
         });
         Button loadButton = (Button) findViewById(R.id.main_button);
         loadButton.setOnClickListener(v -> {
+            progressBar.setVisibility(View.VISIBLE);
             String login = editText.getText().toString().trim();
             presenter.loadRepo(login);
             Keyboard.hide(MainActivity.this);
         });
+        progressBar = (ProgressBar) findViewById(R.id.main_progress);
 
         adapter = new MainAdapter(this);
         presenter = new MainPresenter(this);
@@ -81,12 +85,14 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
 
     @Override
     public void showList(List<GitHubRepo> repos) {
+        progressBar.setVisibility(View.GONE);
         adapter.notifyDataSetChanged(repos);
         openButton.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showError() {
+        progressBar.setVisibility(View.GONE);
         Toast.makeText(this, R.string.no_user_on_git_hub, Toast.LENGTH_SHORT).show();
     }
 

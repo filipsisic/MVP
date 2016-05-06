@@ -7,6 +7,7 @@ import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public abstract class BaseModel {
 
@@ -14,6 +15,7 @@ public abstract class BaseModel {
 
     protected <T> void execute(Observable<T> call, Action1<T> success, Action1<Throwable> error) {
         Subscription subscription = call
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(success, error);
         subscriptions.add(subscription);
