@@ -11,6 +11,7 @@ import com.vasko.mvp.data.GitHubUser;
 import com.vasko.mvp.followers.FollowersActivity;
 import com.vasko.mvp.common.GitHubUserAdapter;
 import com.vasko.mvp.helper.Utility;
+import com.vasko.mvp.repo.PresenterInterfaces.PresenterInterface;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class RepoActivity extends BaseActivity implements ActivityInterface {
 
     public static final String REPO_NAME = "REPO_NAME";
 
-    private RepoPresenter presenter;
+    private PresenterInterface presenter;
     private GitHubUserAdapter adapter;
 
     @Override
@@ -61,7 +62,7 @@ public class RepoActivity extends BaseActivity implements ActivityInterface {
     }
 
     @Override
-    protected BasePresenter getPresenter() {
-        return presenter;
+    protected BasePresenter getBasePresenter() {
+        return presenter.getBasePresenter();
     }
 }

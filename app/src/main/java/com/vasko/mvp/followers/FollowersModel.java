@@ -18,10 +18,11 @@ class FollowersModel extends BaseModel implements ModelInterface {
     }
 
     @Override
-    public BaseModel getModel() {
+    public BaseModel getBaseModel() {
         return this;
     }
 
+    @Override
     public void loadFollowers(String login) {
         Observable<List<GitHubUser>> observable = Rest.getClient().followers(login);
         execute(observable,

@@ -8,10 +8,10 @@ import java.util.List;
 
 import rx.Observable;
 
-class MainPresenter extends BasePresenter implements PresenterInterface {
+class MainPresenter extends BasePresenter implements PresenterInterfaces.PresenterCallback, PresenterInterfaces.PresenterInterface {
 
     private final ActivityInterface view;
-    private final MainModel model;
+    private final ModelInterface model;
 
     public MainPresenter(ActivityInterface view) {
         this.view = view;
@@ -19,8 +19,13 @@ class MainPresenter extends BasePresenter implements PresenterInterface {
     }
 
     @Override
-    public BaseModel getModel() {
-        return model;
+    public BasePresenter getBasePresenter() {
+        return this;
+    }
+
+    @Override
+    protected BaseModel getBaseModel() {
+        return model.getBaseModel();
     }
 
     @Override
@@ -33,6 +38,7 @@ class MainPresenter extends BasePresenter implements PresenterInterface {
         view.showError();
     }
 
+    @Override
     public void loadRepo(String login) {
         model.loadRepo(login);
     }

@@ -51,7 +51,7 @@ public class FollowersActivity extends BaseActivity implements ActivityInterface
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter getBasePresenter() {
         return followersPresenter.getPresenter();
     }
 }

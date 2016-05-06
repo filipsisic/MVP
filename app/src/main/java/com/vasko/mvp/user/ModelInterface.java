@@ -1,4 +1,4 @@
-package com.vasko.mvp.followers;
+package com.vasko.mvp.user;
 
 import com.vasko.mvp.base.BaseModel;
 
@@ -6,6 +6,6 @@ interface ModelInterface {
 
     BaseModel getBaseModel();
 
-    void loadFollowers(String login);
+    void loadUser(String login);
 
 }

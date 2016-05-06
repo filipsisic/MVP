@@ -23,6 +23,11 @@ class FollowersPresenter extends BasePresenter implements PresenterCallback, Pre
         return this;
     }
 
+    @Override
+    protected BaseModel getBaseModel() {
+        return followersModel.getBaseModel();
+    }
+
     public void loadFollowers(String login) {
         followersModel.loadFollowers(login);
     }
@@ -37,8 +42,4 @@ class FollowersPresenter extends BasePresenter implements PresenterCallback, Pre
         activity.showError();
     }
 
-    @Override
-    protected BaseModel getModel() {
-        return followersModel.getModel();
-    }
 }

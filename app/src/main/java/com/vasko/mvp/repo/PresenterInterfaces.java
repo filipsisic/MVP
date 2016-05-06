@@ -1,4 +1,4 @@
-package com.vasko.mvp.followers;
+package com.vasko.mvp.repo;
 
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
@@ -13,15 +13,18 @@ class PresenterInterfaces {
 
     interface PresenterCallback {
 
-        void onFollowersSuccess(List<GitHubUser> followers);
+        void onContributorsSuccess(List<GitHubUser> contributors);
 
-        void onFollowersError();
+        void onContributorsError();
+
     }
 
     interface PresenterInterface {
 
-        BasePresenter getPresenter();
+        BasePresenter getBasePresenter();
 
-        void loadFollowers(String login);
+        void loadContributors(String login, String repoName);
+
     }
+
 }

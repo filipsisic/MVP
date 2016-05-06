@@ -3,11 +3,13 @@ package com.vasko.mvp.user;
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
+import com.vasko.mvp.user.PresenterInterfaces.PresenterCallback;
+import com.vasko.mvp.user.PresenterInterfaces.PresenterInterface;
 
-class UserPresenter extends BasePresenter implements PresenterInterface {
+class UserPresenter extends BasePresenter implements PresenterCallback, PresenterInterface {
 
     private final ActivityInterface view;
-    private final UserModel model;
+    private final ModelInterface model;
 
     public UserPresenter(ActivityInterface view) {
         this.view = view;
@@ -15,10 +17,16 @@ class UserPresenter extends BasePresenter implements PresenterInterface {
     }
 
     @Override
-    protected BaseModel getModel() {
-        return model;
+    public BasePresenter getBasePresenter() {
+        return this;
     }
 
+    @Override
+    protected BaseModel getBaseModel() {
+        return model.getBaseModel();
+    }
+
+    @Override
     public void loadUser(String login) {
         model.loadUser(login);
     }
@@ -32,4 +40,6 @@ class UserPresenter extends BasePresenter implements PresenterInterface {
     public void onUserError() {
         view.showError();
     }
+
+
 }
