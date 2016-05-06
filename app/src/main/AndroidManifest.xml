@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.vasko.mvp"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.vasko.mvp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".user.UserActivity"/>
-        <activity android:name=".repo.RepoActivity">
-        </activity>
+        <activity android:name=".repo.RepoActivity"/>
+        <activity android:name=".followers.FollowersActivity"/>
     </application>
 
 </manifest>
