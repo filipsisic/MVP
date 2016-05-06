@@ -2,12 +2,12 @@ package com.vasko.mvp.user;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
+import com.vasko.mvp.helper.Utility;
 
 public class UserActivity extends BaseActivity implements ActivityInterface {
 
@@ -51,6 +51,6 @@ public class UserActivity extends BaseActivity implements ActivityInterface {
 
     @Override
     public void showError() {
-        Toast.makeText(this, R.string.no_user_details, Toast.LENGTH_SHORT).show();
+        Utility.showToast(this, R.string.no_user_details);
     }
 }

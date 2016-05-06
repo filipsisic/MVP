@@ -15,11 +15,11 @@ import java.util.List;
 
 class RepoAdapter extends BaseAdapter {
 
-    private final Context context;
     private final List<GitHubUser> list;
+    private LayoutInflater inflater;
 
     public RepoAdapter(Context context) {
-        this.context = context;
+        inflater = LayoutInflater.from(context);
         list = new ArrayList<>();
     }
 
@@ -48,7 +48,7 @@ class RepoAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.repo_adapter_row, parent, false);
+            convertView = inflater.inflate(R.layout.repo_adapter_row, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
             convertView.setTag(viewHolder);

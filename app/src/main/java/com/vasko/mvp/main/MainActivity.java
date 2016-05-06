@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 import com.vasko.mvp.helper.Keyboard;
+import com.vasko.mvp.helper.Utility;
 import com.vasko.mvp.repo.RepoActivity;
 import com.vasko.mvp.user.UserActivity;
 
@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
 
     @Override
     public void showError() {
-        Toast.makeText(this, R.string.no_user_on_git_hub, Toast.LENGTH_SHORT).show();
+        Utility.showToast(this, R.string.no_user_on_git_hub);
     }
 
     private TextWatcher getTextListener() {
