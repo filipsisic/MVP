@@ -1,4 +1,4 @@
-package com.vasko.mvp.followers;
+package com.vasko.mvp.common;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,12 +15,12 @@ import java.util.List;
 /**
  * Created by Filip on 5.5.2016..
  */
-public class FollowersAdapter extends BaseAdapter {
+public class GitHubUserAdapter extends BaseAdapter {
 
     private List<GitHubUser> followers;
     private LayoutInflater inflater;
 
-    public FollowersAdapter(Context context) {
+    public GitHubUserAdapter(Context context) {
         followers = new ArrayList<>();
         inflater = LayoutInflater.from(context);
     }

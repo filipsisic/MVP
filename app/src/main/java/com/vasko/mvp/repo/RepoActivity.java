@@ -9,6 +9,7 @@ import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
 import com.vasko.mvp.followers.FollowersActivity;
+import com.vasko.mvp.common.GitHubUserAdapter;
 import com.vasko.mvp.helper.Utility;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class RepoActivity extends BaseActivity implements ActivityInterface {
     public static final String REPO_NAME = "REPO_NAME";
 
     private RepoPresenter presenter;
-    private RepoAdapter adapter;
+    private GitHubUserAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,13 @@ public class RepoActivity extends BaseActivity implements ActivityInterface {
         setContentView(R.layout.repo_activity);
 
         presenter = new RepoPresenter(this);
-        adapter = new RepoAdapter(this);
+        adapter = new GitHubUserAdapter(this);
 
         ListView listView = (ListView) findViewById(R.id.repo_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(RepoActivity.this, FollowersActivity.class);
-            intent.putExtra(FollowersActivity.USER_LOGIN,  ((RepoAdapter) parent.getAdapter()).getItem(position).getLogin());
+            intent.putExtra(FollowersActivity.USER_LOGIN,  ((GitHubUserAdapter) parent.getAdapter()).getItem(position).getLogin());
             startActivity(intent);
         });
 
@@ -51,7 +52,7 @@ public class RepoActivity extends BaseActivity implements ActivityInterface {
 
     @Override
     public void showContributors(List<GitHubUser> contributors) {
-        adapter.notifyDataSetChanged(contributors);
+        adapter.createList(contributors);
     }
 
     @Override

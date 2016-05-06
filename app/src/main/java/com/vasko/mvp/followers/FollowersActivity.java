@@ -7,6 +7,7 @@ import android.widget.ListView;
 import com.vasko.mvp.R;
 import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
+import com.vasko.mvp.common.GitHubUserAdapter;
 import com.vasko.mvp.data.GitHubUser;
 import com.vasko.mvp.helper.Utility;
 
@@ -20,14 +21,14 @@ public class FollowersActivity extends BaseActivity implements ActivityInterface
     public static final String USER_LOGIN = "USER_LOGIN_FOLLOWERS";
 
     private FollowersPresenter followersPresenter;
-    private FollowersAdapter adapter;
+    private GitHubUserAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_followers);
 
-        adapter = new FollowersAdapter(this);
+        adapter = new GitHubUserAdapter(this);
         followersPresenter = new FollowersPresenter(this);
 
         ListView listView = (ListView) findViewById(R.id.followers_list);
