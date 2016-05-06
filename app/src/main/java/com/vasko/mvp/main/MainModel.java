@@ -20,7 +20,7 @@ class MainModel extends BaseModel {
 
     public void loadRepo(String login) {
         Observable<List<GitHubRepo>> networkRepos = Rest.getClient().repositories(login);
-        Observable<List<GitHubRepo>> databaseResponse = Database.getInstance().getReposAsync();
+        Observable<List<GitHubRepo>> databaseResponse = Database.async().getRepos();
         Observable<List<GitHubRepo>> zip = Observable.zip(networkRepos, databaseResponse, (gitHubRepos, gitHubRepos2) -> {
             List<GitHubRepo> temp = new ArrayList<>();
             temp.addAll(gitHubRepos);
