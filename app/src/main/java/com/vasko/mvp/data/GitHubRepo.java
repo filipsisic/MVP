@@ -18,4 +18,9 @@ public class GitHubRepo {
     public boolean isFork() {
         return fork;
     }
+
+    public GitHubRepo(String name, boolean fork) {
+        this.name = name;
+        this.fork = fork;
+    }
 }
