@@ -3,18 +3,15 @@ package com.vasko.mvp.followers;
 import com.vasko.mvp.base.BaseModel;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubUser;
-import com.vasko.mvp.followers.PresenterDeclaration.PresenterToModelInterface;
-import com.vasko.mvp.followers.PresenterDeclaration.PresenterToViewInterface;
+import com.vasko.mvp.followers.PresenterInterfaces.PresenterCallback;
+import com.vasko.mvp.followers.PresenterInterfaces.PresenterInterface;
 
 import java.util.List;
 
-/**
- * Created by Filip on 5.5.2016..
- */
-class FollowersPresenter extends BasePresenter implements PresenterToModelInterface, PresenterToViewInterface {
+class FollowersPresenter extends BasePresenter implements PresenterCallback, PresenterInterface {
 
-    private ActivityInterface activity;
-    private ModelInterface followersModel;
+    private final ActivityInterface activity;
+    private final ModelInterface followersModel;
 
     public FollowersPresenter(ActivityInterface activity) {
         this.activity = activity;
