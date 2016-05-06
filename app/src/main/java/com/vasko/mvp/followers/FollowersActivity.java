@@ -9,19 +9,17 @@ import com.vasko.mvp.base.BaseActivity;
 import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.common.GitHubUserAdapter;
 import com.vasko.mvp.data.GitHubUser;
-import com.vasko.mvp.followers.PresenterDeclaration.PresenterToViewInterface;
+import com.vasko.mvp.followers.PresenterInterfaces.PresenterInterface;
 import com.vasko.mvp.helper.Utility;
 
 import java.util.List;
 
-/**
- * Created by Filip on 5.5.2016..
- */
+@SuppressWarnings("ConstantConditions")
 public class FollowersActivity extends BaseActivity implements ActivityInterface {
 
     public static final String USER_LOGIN = "USER_LOGIN_FOLLOWERS";
 
-    private PresenterToViewInterface followersPresenter;
+    private PresenterInterface followersPresenter;
     private GitHubUserAdapter adapter;
 
     @Override
@@ -53,7 +51,7 @@ public class FollowersActivity extends BaseActivity implements ActivityInterface
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter getBasePresenter() {
         return followersPresenter.getPresenter();
     }
 }

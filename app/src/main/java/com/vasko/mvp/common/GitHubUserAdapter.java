@@ -12,17 +12,14 @@ import com.vasko.mvp.data.GitHubUser;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Filip on 5.5.2016..
- */
 public class GitHubUserAdapter extends BaseAdapter {
 
-    private List<GitHubUser> followers;
-    private LayoutInflater inflater;
+    private final Context context;
+    private final List<GitHubUser> followers;
 
     public GitHubUserAdapter(Context context) {
+        this.context = context;
         followers = new ArrayList<>();
-        inflater = LayoutInflater.from(context);
     }
 
     public void createList(List<GitHubUser> followers) {
@@ -50,7 +47,7 @@ public class GitHubUserAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+            convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.textView = (TextView) convertView.findViewById(android.R.id.text1);
             convertView.setTag(viewHolder);

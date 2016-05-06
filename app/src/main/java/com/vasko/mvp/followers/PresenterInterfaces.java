@@ -5,19 +5,20 @@ import com.vasko.mvp.data.GitHubUser;
 
 import java.util.List;
 
-/**
- * Created by Filip on 6.5.2016..
- */
-public class PresenterDeclaration {
+class PresenterInterfaces {
 
-    interface PresenterToModelInterface {
+    private PresenterInterfaces() {
+
+    }
+
+    interface PresenterCallback {
 
         void onFollowersSuccess(List<GitHubUser> followers);
 
         void onFollowersError();
     }
 
-    interface PresenterToViewInterface {
+    interface PresenterInterface {
 
         BasePresenter getPresenter();
 

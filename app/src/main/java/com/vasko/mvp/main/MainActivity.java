@@ -16,6 +16,7 @@ import com.vasko.mvp.base.BasePresenter;
 import com.vasko.mvp.data.GitHubRepo;
 import com.vasko.mvp.helper.Keyboard;
 import com.vasko.mvp.helper.Utility;
+import com.vasko.mvp.main.PresenterInterfaces.PresenterInterface;
 import com.vasko.mvp.repo.RepoActivity;
 import com.vasko.mvp.user.UserActivity;
 
@@ -27,8 +28,8 @@ import static com.vasko.mvp.user.UserActivity.LOGIN;
 @SuppressWarnings("ConstantConditions")
 public class MainActivity extends BaseActivity implements ActivityInterface {
 
+    private PresenterInterface presenter;
     private MainAdapter adapter;
-    private MainPresenter presenter;
     private Button openButton;
     private ProgressBar progressBar;
 
@@ -66,8 +67,8 @@ public class MainActivity extends BaseActivity implements ActivityInterface {
     }
 
     @Override
-    public BasePresenter getPresenter() {
-        return presenter;
+    public BasePresenter getBasePresenter() {
+        return presenter.getBasePresenter();
     }
 
     private void startUserActivity(String login) {
